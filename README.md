@@ -1,16 +1,16 @@
 React 组件 ===== React 元素
-1. React.createElement()
+###1. React.createElement()
    在接收第二个参数后(属性列表)，接收一个动态参数，它表示所创建元素的子元素。
 
-2. ReactDOM.render(React元素，DOM元素);
+###2. ReactDOM.render(React元素，DOM元素);
 
-3. React.Component
+###3. React.Component
    该类定义了一个单一的实例函数 —— render()，并使函数返回虚拟 DOM 对象
 
-4. this.setState()
+###4. this.setState()
     参数是函数返回json或者是json
 
-5. 生命周期
+###5. 生命周期
     创建阶段(Mounting) -> 该阶段的函数只执行一次  
     constructor()   
         · 作用：1 获取props 2 初始化state  
@@ -39,9 +39,9 @@ React 组件 ===== React 元素
     componentDidUpdate()  
     componentWillUnmount()  
 
-6. 通过静态属性 defaultProps 来初始化props  
+###6. 通过静态属性 defaultProps 来初始化props  
 
-7. fetch 基本使用  
+###7. fetch 基本使用  
     · 通过fetch请求回来的数据，是一个Promise对象.  
     · 调用then()方法，通过参数response，获取到响应对象  
     · 调用 response.json() 方法，解析服务器响应数据  
