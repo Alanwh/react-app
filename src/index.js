@@ -6,10 +6,11 @@ import ReactDOM from 'react-dom';
 // import LifeCycle from './components/lesson3/index';
 // import BindEvent from './components/lesson4/index';
 // import PageRouter from './components/lesson5/index';
-import Fetch from './components/lesson6/index';
+// import Fetch from './components/lesson6/index';
+import MyRedux from './components/lesson7/index';
 
 ReactDOM.render(
-    <Fetch />,
+    <MyRedux />,
     document.getElementById('root')
 );
 
