@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+// import App from './demo1/app';
+import App from './demo2/index';
 
-class App extends Component {
+class Demo extends Component {
     constructor () {
         super()
         this.state = {
@@ -10,10 +12,10 @@ class App extends Component {
     render () {
         return (
             <div>
-               aaa
+               <App />
             </div>
         )
     }
 }
 
-export default App
+export default Demo;
