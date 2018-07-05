@@ -13,12 +13,6 @@ function createStore (state, stateChanger) {
       stateChanger(state, action)
       listeners.forEach((listener) => listener())
     }
-    let oldState = store.getState() // 缓存旧的 state
-    store.subscribe(() => {
-      const newState = store.getState() // 数据可能变化，获取新的 state
-      renderApp(newState, oldState) // 把新旧的 state 传进去渲染
-      oldState = newState // 渲染完以后，新的 newState 变成了旧的 oldState，等待下一次数据变化重新渲染
-    })
     return { getState, dispatch, subscribe }
   }
   
@@ -47,14 +41,14 @@ const appState = {
 }
 
 function renderApp (newAppState, oldAppState = {}) {
-    console.log('render app...');
     if (newAppState === oldAppState) return; // 数据没有变化就不渲染了
+    console.log('render app...');
     renderTitle(newAppState.title);
     renderContent(newAppState.content);
 }
   
 function renderTitle (newTitle, oldTitle = {}) {
-    if (newTitle === oldTitle) return // 数据没有变化就不渲染了
+    if (newTitle === oldTitle) return; // 数据没有变化就不渲染了
     console.log('render title...');
     const titleDOM = document.getElementById('title')
     titleDOM.innerHTML = newTitle.text
@@ -85,7 +79,14 @@ function renderContent (newContent, oldContent = {}) {
 // dispatch({ type: 'UPDATE_TITLE_COLOR', color: 'blue' });
 
 const store = createStore(appState, stateChanger);
-
+let oldState = store.getState(); // 缓存旧的 state
+store.subscribe(() => {
+    const newState = store.getState() // 数据可能变化，获取新的 state
+    renderApp(newState, oldState) // 把新旧的 state 传进去渲染
+    oldState = newState // 渲染完以后，新的 newState 变成了旧的 oldState，等待下一次数据变化重新渲染
+})
+store.dispatch({ type: 'UPDATE_TITLE_TEXT', text: 'this is dispatch' });
+store.dispatch({ type: 'UPDATE_TITLE_COLOR', color: 'green' });
 class App extends Component {
     render() {
         return(
@@ -103,9 +104,8 @@ class App extends Component {
         // },1000)
 
         renderApp(store.getState()) // 首次渲染页面
-        store.subscribe(() => renderApp(store.getState()));// 联动监听
-        store.dispatch({ type: 'UPDATE_TITLE_TEXT', text: 'this is dispatch' });
-        store.dispatch({ type: 'UPDATE_TITLE_COLOR', color: 'blue' });
+        // store.subscribe(() => renderApp(store.getState()));// 联动监听
+    
         // setTimeout(()=>{
         //     renderApp(store.getState());
         // },1000)
