@@ -54,3 +54,36 @@ React 组件 ===== React 元素
 * Actions
 * Reducers
 * Store
+
+### connect
+* 可以把一些可复用的逻辑放在高阶组件当中
+* 高阶组件包装的新组件和原来组件之间通过 props 传递信息，减少代码的重复程度
+
+### mapStateToProps 
+* 相当于告知了 Connect 应该如何去 store 里面取数据，然后可以把这个函数的返回结果传给被包装的组件
+
+### mapDispatchToProps
+
+### Provider
+* 它就是一个容器组件，会把嵌套的内容原封不动作为自己的子组件渲染出来。
+* 它还会把外界传给它的 props.store 放到 context，这样子组件 connect 的时候都可以获取到。
+
+### 基本流程
+* 1.UI组件Example,
+    只接受this.props数据,包括reducer出来的数据state,以及dispatch方法.
+* 2.容器组件
+    const store = createStore(reducer);
+    通过mapStateToProps将reducer返回的state作为this.props传入.
+    通过mapDispatchToProps将action作为this.props传入.
+    通过connect方法将这两个方法与Example组件连接起来,返回一个容器组件.
+
+### UI组件 
+* 只负责UI的呈现,不带有任何业务逻辑
+* 没有状态(即不使用this.state这个变量)
+* 所有数据都由参数(this.props)提供
+* 不适用任何redux的API
+
+### 容器组件
+* 负责管理数据和业务逻辑,不负责UI的呈现
+* 带有内部状态
+* 使用redux的API

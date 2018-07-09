@@ -8,10 +8,20 @@ import ReactDOM from 'react-dom';
 // import PageRouter from './components/lesson5/index';
 // import Fetch from './components/lesson6/index';
 // import Demo from './components/lesson7/index';
-import App from './components/lesson8/index';
+// import App from './components/lesson8/index';
+
+
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import rootReducer from './components/lesson9/reducers/index'
+import App from './components/lesson9/components/App'
+const store = createStore(rootReducer)
 
 ReactDOM.render(
-    <App />,
+    // <App />,
+    <Provider store={store}>
+        <App />
+    </Provider>,
     document.getElementById('root')
 );
 
