@@ -1,27 +1,32 @@
-import React, { Component } from 'react';
+import React,{ Component } from 'react';
 import PropTypes from 'prop-types';
-import Header from './Header';
-import Content from './Content';
-
-import createStore from './store';
-import themeReducer from './reducer';
-
-const store = createStore(themeReducer);
+import Header from './components/header/header';
+import Main from './components/main/main';
+import './css/app.css';
 
 class App extends Component {
   static childContextTypes = {
-    store: PropTypes.object
+    themeColor: PropTypes.string
   }
 
-  getChildContext () {
-    return { store }
+  constructor() {
+    super();
+    this.state = {
+      themeColor: 'red'
+    }
   }
-  
-  render () {
-    return (
+
+  getChildContext() {
+    return {
+      themeColor: this.state.themeColor
+    }
+  }
+
+  render() {
+    return(
       <div>
         <Header />
-        <Content />
+        <Main />
       </div>
     )
   }

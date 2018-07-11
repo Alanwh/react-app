@@ -48,7 +48,10 @@ React 组件 ===== React 元素
 * 再次调用then()方法，通过参数data，就获取到数据了  
 
 ### context 
-    一个组件的 context 只有它的子组件能够访问
+* 一个组件的 context 只有它的子组件能够访问
+* getChildContext 方法子树的 context 对象
+* 必须提供 childContextTypes 作为 context 的声明和验证。
+* 任意深度的子组件都可以通过 contextTypes 来声明你想要的 context 里面的哪些状态，然后可以通过 this.context 访问到那些状态。
 
 ### react-redux
 * Actions
