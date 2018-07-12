@@ -53,6 +53,8 @@ React 组件 ===== React 元素
 * 必须提供 childContextTypes 作为 context 的声明和验证。
 * 任意深度的子组件都可以通过 contextTypes 来声明你想要的 context 里面的哪些状态，然后可以通过 this.context 访问到那些状态。
 
+模块（组件）之间需要共享数据 <---> 数据可能被任意修改导致不可预料的结果
+
 ### react-redux
 * Actions
 * Reducers

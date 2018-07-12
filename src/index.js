@@ -8,7 +8,9 @@ import ReactDOM from 'react-dom';
 // import PageRouter from './components/lesson5/index';
 // import Fetch from './components/lesson6/index';
 // import Demo from './components/lesson7/index';
-import App from './components/lesson8/context/index';
+// import App from './components/lesson8/context/index';
+// import App from './components/lesson8/redux/index';
+import App from './components/lesson8/react-redux/index';
 
 
 // import { Provider } from 'react-redux'
